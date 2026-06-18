@@ -77,17 +77,49 @@
             transform: scale(1.05);
         }
         .hero-image {
-            flex: 1 1 300px;
-            text-align: center;
+            flex: 1 1 350px;
             position: relative;
+            min-height: 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .hero-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 20px;
+            border-radius: 16px;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-            /* To make it look like a mockup floating */
-            transform: translateY(10px);
+            position: absolute;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+        }
+        .img-back {
+            width: 55%;
+            right: 10%;
+            top: 5%;
+            transform: scale(0.9) rotate(5deg);
+            z-index: 1;
+            opacity: 0.8;
+        }
+        .img-front {
+            width: 60%;
+            left: 10%;
+            bottom: 5%;
+            transform: rotate(-3deg);
+            z-index: 2;
+        }
+        .img-back:hover {
+            transform: scale(1.05) rotate(0deg) translateY(-15px);
+            z-index: 10;
+            opacity: 1;
+            box-shadow: 0 30px 40px -10px rgba(0, 0, 0, 0.4);
+        }
+        .img-front:hover {
+            transform: scale(1.05) rotate(0deg) translateY(-15px);
+            z-index: 10;
+            box-shadow: 0 30px 40px -10px rgba(0, 0, 0, 0.4);
+        }
+        /* 強調効果：ホバーされていない側の画像を少し暗くする */
+        .hero-image:hover img:not(:hover) {
+            opacity: 0.5;
         }
         
         /* Main Container */
@@ -190,9 +222,12 @@
                 display: flex;
                 justify-content: center;
             }
-            .hero-image img {
-                max-width: 80%;
+            .hero-image {
+                min-height: 350px;
+                width: 100%;
             }
+            .hero-image img.img-back { width: 50%; right: 5%; }
+            .hero-image img.img-front { width: 55%; left: 5%; }
             .premium-section {
                 padding: 3rem 1.5rem;
             }
@@ -215,7 +250,8 @@
             </div>
         </div>
         <div class="hero-image">
-            <img src="mockup-placeholder.png" alt="アプリ画面">
+            <img src="screenshot2.png" alt="自習室画面" class="img-back">
+            <img src="screenshot1.png" alt="ホーム画面" class="img-front">
         </div>
     </div>
 </div>
@@ -246,7 +282,6 @@
     <div class="footer-links">
         <a href="./privacy.html">プライバシーポリシー</a>
         <a href="./terms.html">利用規約</a>
-        <a href="#">お問い合わせ</a>
     </div>
     <p class="copyright">&copy; 2026 士業ドリルラボ All rights reserved.</p>
 </footer>
